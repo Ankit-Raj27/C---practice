@@ -1,46 +1,37 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class binary
 {
-private:
     string s;
 
 public:
     void read(void);
-    void chk_bin(void);
-    void ones(void);
-    void display1(void);
-    void display2(void);
+    void check(void);
+    void opposite(void);
+    void display(void);
+    void display_before(void);
 };
 
-void binary ::read(void)   
+void binary ::read(void)
 {
-    cout << "Enter a binary number : " << endl;
+    cout << "Enter the binary number : ";
     cin >> s;
 }
-void binary ::chk_bin(void)
+void binary ::check()
 {
     for (int i = 0; i < s.length(); i++)
     {
         if (s.at(i) != '0' && s.at(i) != '1')
         {
-            cout << "Incorrect binary format!";
+            cout << "It is not a binary number, try again!" << endl;
             exit(0);
         }
     }
 }
 
-void binary ::display1(void)
-{
-    cout << "Before changing" << endl;
-    for (int i = 0; i < s.length(); i++)
-    {
-        cout << s.at(i);
-    }
-}
-
-void binary ::ones(void)
+void binary ::opposite()
 {
     for (int i = 0; i < s.length(); i++)
     {
@@ -53,15 +44,18 @@ void binary ::ones(void)
             s.at(i) = '0';
         }
     }
-    cout << endl;
 }
 
-void binary ::display2(void)
+void binary :: display_before(void)
 {
-    cout << "After changing" << endl;
+    cout<<"Bianry number before change : "<<s<<endl;
+}
+
+void binary :: display(void)
+{   cout<<"Binary number after change : ";
     for (int i = 0; i < s.length(); i++)
     {
-        cout << s.at(i);
+        cout<<s.at(i);
     }
 }
 
@@ -69,9 +63,9 @@ int main()
 {
     binary b;
     b.read();
-    b.chk_bin();
-    b.display1();
-    b.ones();
-    b.display2();
+    b.check();
+    b.display_before();
+    b.opposite();
+    b.display();    
     return 0;
 }
